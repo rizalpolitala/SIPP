@@ -16,3 +16,10 @@ $routes->get('/edit_pelanggaran', 'Home::edit_pelanggaran');
 $routes->get('/login', 'Auth::login');
 
 $routes->get('/', 'LandingPage::index');
+
+$routes->get('/', 'Perizinan::index');
+$routes->get('/dashboard', 'Home::dashboard');
+$routes->get('/about', 'Home::about');
+$routes->get('/form_perizinan', 'Perizinan::form_perizinan');
+$routes->get('/tabel_perizinan', 'Perizinan::tabel_perizinan');
+$routes->get('/edit_perizinan', 'Perizinan::edit_perizinan');

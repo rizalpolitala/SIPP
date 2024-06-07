@@ -22,6 +22,14 @@
                 <span>Tabel Pelanggaran</span>
             </a>
         </li><!-- End Tables Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= base_url('tabel_perizinan'); ?>">
+                <i class=" bi bi-layout-text-window-reverse"></i>
+                <span>Perizinan</span>
+            </a>
+        </li><!-- End Tables Nav -->
+        <br>
         <br>
 
         <li class="nav-heading">Pages</li>
