@@ -7,7 +7,7 @@ class Home extends BaseController
     public function index(): string
     {
         // return view('welcome_message');
-        return view('pages/dashboard');
+        return view('pages/admin/dashboard');
     }
 
     public function dashboard()
@@ -17,11 +17,21 @@ class Home extends BaseController
 
     public function form_pelanggaran()
     {
-        return view('pages/form_pelanggaran');
+        return view('pages/admin/form_pelanggaran');
     }
 
     public function tabel_pelanggaran()
     {
-        return view('pages/tabel_pelanggaran');
+        return view('pages/admin/tabel_pelanggaran');
+    }
+
+    public function detail_pelanggaran()
+    {
+        return view('pages/admin/detail_pelanggaran');
+    }
+
+    public function edit_pelanggaran()
+    {
+        return view('pages/admin/edit_pelanggaran');
     }
 }

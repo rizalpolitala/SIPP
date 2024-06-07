@@ -9,32 +9,18 @@
 
         <!-- Forms Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" href="<?= base_url('form_pelanggaran'); ?>">
+                <i class="bi bi-journal-text"></i>
+                <span>Form Pelanggaran</span>
             </a>
-            <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="<?= base_url('form_pelanggaran'); ?>">
-                        <i class="bi bi-circle"></i><span>Form Pelanggaran</span>
-                    </a>
-                </li>
-                <!-- Tambahkan item-form lainnya sesuai kebutuhan -->
-            </ul>
         </li><!-- End Forms Nav -->
 
         <!-- Tables Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" href="<?= base_url('tabel_pelanggaran'); ?>">
+                <i class=" bi bi-layout-text-window-reverse"></i>
+                <span>Tabel Pelanggaran</span>
             </a>
-            <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="<?= base_url('tabel_pelanggaran'); ?>">
-                        <i class="bi bi-circle"></i><span>Tabel Pelanggaran</span>
-                    </a>
-                </li>
-                <!-- Tambahkan item-tabel lainnya sesuai kebutuhan -->
-            </ul>
         </li><!-- End Tables Nav -->
         <br>
 
