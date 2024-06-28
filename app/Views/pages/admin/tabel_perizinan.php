@@ -8,9 +8,8 @@
         <h1>Tabel Data Perizinan</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active">Data</li>
+
+
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -22,11 +21,24 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Data Perizinan</h5>
-                        <a href="/form_perizinan"><button class="btn btn-primary">Tambah</button></a>
+                        <?php if (session()->getFlashdata('message')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('message'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php
+                        if (session()->get('level') != 'kepala') {
+                        ?>
+                            <a href="/form_perizinan"><button class="btn btn-primary">Tambah</button></a>
+                            <a href="/cetak_perizinan_pdf"><button class="btn btn-secondary">Cetak</button></a>
+                        <?php
+                        }
+                        ?>
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Nama Perusahaan</th>
                                     <th>Pemilik</th>
                                     <th>Pekerjaan</th>
@@ -38,32 +50,50 @@
                                     <th>Izin Yang Belum Dimiliki</th>
                                     <th>Masa Berlaku</th>
                                     <th>Keterangan</th>
-                                    <th>Aksi</th>
+                                    <?php
+                                    if (session()->get('level') != 'kepala') {
+                                    ?>
+                                        <th>Aksi</th>
+                                    <?php
+                                    }
+                                    ?>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Bintang dilangit</td>
-                                    <td>Norrahmah</td>
-                                    <td>Pengusaha</td>
-                                    <td>Material</td>
-                                    <td>Panggung</td>
-                                    <td>Playday</td>
-                                    <td>Bagus</td>
-                                    <td>Ada</td>
-                                    <td>Belum</td>
-                                    <td>2029</td>
-                                    <td>Lolos</td>
-                                    <td>
-                                        <a href="edit_perizinan" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                        <a href="detail.php?id=12345" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                <?php
+                                $no = 1;
+                                foreach ($perizinan as $item) : ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+
+                                        <td><?= $item['nama_usaha']; ?></td>
+                                        <td><?= $item['nama_pemilik']; ?></td>
+                                        <td><?= $item['jabatan']; ?></td>
+                                        <td><?= $item['jenis_usaha']; ?></td>
+                                        <td><?= $item['alamat']; ?></td>
+                                        <td><?= $item['kecamatan']; ?></td>
+                                        <td><?= $item['hasil_pemeriksaan']; ?></td>
+                                        <td><?= $item['izin_dimiliki']; ?></td>
+                                        <td><?= $item['izin_belumdimiliki']; ?></td>
+                                        <td><?= $item['masa_berlaku']; ?></td>
+                                        <td><?= $item['keterangan']; ?></td>
+                                        <?php
+                                        if (session()->get('level') != 'kepala') {
+                                        ?>
+                                            <td>
+                                                <a href="/edit_perizinan/<?= $item['id_perizinan']; ?>" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                                <a href="/delete_perizinan/<?= $item['id_perizinan']; ?>" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </td>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->
